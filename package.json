@@ -16,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/giantswarm/codesign-util.git"
+    "url": "git+https://github.com/giantswarm/signcode-util.git"
   },
   "author": "Giant Swarm GmbH",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/giantswarm/codesign-util/issues"
+    "url": "https://github.com/giantswarm/signcode-util/issues"
   },
-  "homepage": "https://github.com/giantswarm/codesign-util/"
+  "homepage": "https://github.com/giantswarm/signcode-util/"
 }
