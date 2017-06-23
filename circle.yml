@@ -1,0 +1,33 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - |
+      wget -q $(curl -sS -H "Authorization: token $RELEASE_TOKEN" https://api.github.com/repos/giantswarm/architect/releases/latest | grep browser_download_url | head -n 1 | cut -d '"' -f 4)
+    - chmod +x ./architect
+    - ./architect version
+
+test:
+  override:
+    - ./architect build
+    - |
+      docker run --rm -ti \
+      -v $(pwd)/test/certs:/mnt/certs \
+      -v $(pwd)/test/binaries:/mnt/binaries \
+      quay.io/giantswarm/signcode-util:$CIRCLE_SHA1 \
+      sign \
+      -certs /mnt/certs/cert.pem \
+      -key /mnt/certs/key.pem \
+      -h sha256 \
+      -n "My Program Name" \
+      -i https://example.com \
+      -in /mnt/binaries/unsigned.exe \
+      -out /mnt/binaries/signed.exe
+
+deployment:
+  master:
+    branch: first-version
+    commands:
+      - ./architect deploy
