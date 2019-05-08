@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/signcode-util.svg?style=svg)](https://circleci.com/gh/giantswarm/signcode-util)
+[![CircleCI](https://circleci.com/gh/giantswarm/signcode-util.svg?style=shield)](https://circleci.com/gh/giantswarm/signcode-util)
 [![Docker Repository on Quay](https://quay.io/repository/giantswarm/signcode-util/status "Docker Repository on Quay")](https://quay.io/repository/giantswarm/signcode-util)
 
 # signcode-util
