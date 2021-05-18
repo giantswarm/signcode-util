@@ -3,7 +3,7 @@ orbs:
   architect: giantswarm/architect@2.8.0
 
 workflows:
-  my-workflow:
+  build-workflow:
     jobs:
 
       - architect/push-to-docker:
