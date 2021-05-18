@@ -1,0 +1,24 @@
+# DO NOT EDIT. Generated with:
+#
+#    devctl@4.5.1
+#
+version: 2
+updates:
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: weekly
+      time: "04:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - giantswarm/team-biscuit
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      time: "04:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - giantswarm/team-biscuit
+    ignore:
+      - dependency-name: zricethezav/gitleaks-action
