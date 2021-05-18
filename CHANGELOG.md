@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2021-05-18
+
 ### Changed
 
 - Use upstream source [mtrojnar/osslsigncode](https://github.com/mtrojnar/osslsigncode) instead of the old SourceForge project, which no longer exists.
 - Update CI configuration and use architect-orb.
 - Improve Dockerfile for smaller resulting image and a simpler build.
 
-[Unreleased]: https://github.com/giantswarm/REPOSITORY_NAME/tree/master
+[Unreleased]: https://github.com/giantswarm/signcode-util/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/giantswarm/signcode-util/releases/tag/v1.0.0
