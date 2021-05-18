@@ -1,26 +1,35 @@
-FROM alpine:3.6
+FROM quay.io/giantswarm/alpine:3.13.5 AS builder
 
-WORKDIR /opt/codesign-util
+WORKDIR /opt/codesign-util/
 
-# version and sha256 hash of our 3rd party download
-ENV VERSION     1.7.1
-ENV SHA256_HASH f9a8cdb38b9c309326764ebc937cba1523a3a751a7ab05df3ecc99d18ae466c9
+# Version and expected SHA256 hash of our 3rd party download
+ENV VERSION     2.1
+ENV SHA256_HASH c512931b6fe151297a1c689f88501e20ffc204c4ffe30e7392eb3decf195065b
 
-RUN set -x \
-  && apk add --update curl build-base openssl-dev curl-dev autoconf libgsf-dev \
-  && curl -s -L https://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-$VERSION.tar.gz > osslsigncode-$VERSION.tar.gz \
-  && sha256sum osslsigncode-$VERSION.tar.gz \
-  && echo "$SHA256_HASH  osslsigncode-$VERSION.tar.gz" > SHA256SUM \
-  && sha256sum -c SHA256SUM \
-  && tar xzf osslsigncode-$VERSION.tar.gz \
-  && cd osslsigncode-$VERSION \
-  && ./configure \
-  && make \
-  && make install \
-  && cd .. \
-  && rm -rf osslsigncode-$VERSION \
-  && apk del curl build-base autoconf \
-  && rm -rf /var/cache/apk/*
+# Dependencies
+RUN apk add --update --no-cache curl build-base openssl-dev curl-dev autoconf libgsf-dev
+
+# Download and verify osslsigncode source
+RUN curl -s -L https://github.com/mtrojnar/osslsigncode/releases/download/$VERSION/osslsigncode-$VERSION.0.tar.gz > osslsigncode-$VERSION.0.tar.gz
+RUN sha256sum osslsigncode-$VERSION.0.tar.gz
+RUN echo "$SHA256_HASH  osslsigncode-$VERSION.0.tar.gz" > SHA256SUM
+RUN sha256sum -c SHA256SUM
+
+# Unpack and build
+RUN tar xzf osslsigncode-$VERSION.0.tar.gz
+RUN cd osslsigncode-$VERSION.0 \
+    && ./configure \
+    && make \
+    && make install
+
+
+FROM quay.io/giantswarm/alpine:3.13.5
+
+WORKDIR /usr/local/bin/
+
+RUN apk add --no-cache ca-certificates curl-dev libgsf-dev openssl-dev
+
+COPY --from=builder /usr/local/bin/osslsigncode .
 
 VOLUME /mnt/certs
 VOLUME /mnt/binaries
