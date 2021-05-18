@@ -3,8 +3,7 @@
 
 # signcode-util
 
-A Docker container for [osslsigncode](https://sourceforge.net/projects/osslsigncode/files/osslsigncode/) to sign binaries for Windows.
-
+A Docker image for [osslsigncode](https://github.com/mtrojnar/osslsigncode) to sign binaries for Windows.
 
 ## Usage
 
@@ -44,7 +43,7 @@ docker run --rm -ti \
 
 The output will look similar to this:
 
-```
+```nohighlight
 Current PE checksum   : 00AC0656
 Calculated PE checksum: 00AC0656
 
@@ -55,20 +54,20 @@ Calculated message digest : 05830C452810052993D51FBDC180FFCD3BA920DA
 Signature verification: ok
 
 Number of signers: 1
-	Signer #0:
-		Subject: /C=DE/postalCode=50670/ST=Nordrhein-Westfalen/L=Cologne/street=c/o Startplatz/street=Im Mediapark 5/O=Giant Swarm GmbH/CN=Giant Swarm GmbH
-		Issuer : /C=US/O=SSL.com/OU=www.ssl.com/CN=SSL.com Object CA
+  Signer #0:
+    Subject: /C=DE/postalCode=50670/ST=Nordrhein-Westfalen/L=Cologne/street=c/o Startplatz/street=Im Mediapark 5/O=Giant Swarm GmbH/CN=Giant Swarm GmbH
+    Issuer : /C=US/O=SSL.com/OU=www.ssl.com/CN=SSL.com Object CA
 
 Number of certificates: 3
-	Cert #0:
-		Subject: /C=DE/postalCode=50670/ST=Nordrhein-Westfalen/L=Cologne/street=c/o Startplatz/street=Im Mediapark 5/O=Giant Swarm GmbH/CN=Giant Swarm GmbH
-		Issuer : /C=US/O=SSL.com/OU=www.ssl.com/CN=SSL.com Object CA
-	Cert #1:
-		Subject: /C=US/O=SSL.com/OU=www.ssl.com/CN=SSL.com Object CA
-		Issuer : /C=US/ST=New Jersey/L=Jersey City/O=The USERTRUST Network/CN=USERTrust RSA Certification Authority
-	Cert #2:
-		Subject: /C=US/ST=New Jersey/L=Jersey City/O=The USERTRUST Network/CN=USERTrust RSA Certification Authority
-		Issuer : /C=US/ST=New Jersey/L=Jersey City/O=The USERTRUST Network/CN=USERTrust RSA Certification Authority
+  Cert #0:
+    Subject: /C=DE/postalCode=50670/ST=Nordrhein-Westfalen/L=Cologne/street=c/o Startplatz/street=Im Mediapark 5/O=Giant Swarm GmbH/CN=Giant Swarm GmbH
+    Issuer : /C=US/O=SSL.com/OU=www.ssl.com/CN=SSL.com Object CA
+  Cert #1:
+    Subject: /C=US/O=SSL.com/OU=www.ssl.com/CN=SSL.com Object CA
+    Issuer : /C=US/ST=New Jersey/L=Jersey City/O=The USERTRUST Network/CN=USERTrust RSA Certification Authority
+  Cert #2:
+    Subject: /C=US/ST=New Jersey/L=Jersey City/O=The USERTRUST Network/CN=USERTrust RSA Certification Authority
+    Issuer : /C=US/ST=New Jersey/L=Jersey City/O=The USERTRUST Network/CN=USERTrust RSA Certification Authority
 
 Succeeded
 ```
