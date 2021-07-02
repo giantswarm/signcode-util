@@ -18,7 +18,7 @@ RUN sha256sum -c SHA256SUM
 # Unpack and build
 RUN tar xzf osslsigncode-$VERSION.0.tar.gz
 
-RUN cd osslsigncode-$VERSION.0 && ./configure
+RUN cd osslsigncode-$VERSION.0 && ./configure --disable-dependency-tracking
 RUN cd osslsigncode-$VERSION.0 && make
 RUN cd osslsigncode-$VERSION.0 && make install
 
