@@ -17,10 +17,10 @@ RUN sha256sum -c SHA256SUM
 
 # Unpack and build
 RUN tar xzf osslsigncode-$VERSION.0.tar.gz
-RUN cd osslsigncode-$VERSION.0 \
-    && ./configure \
-    && make \
-    && make install
+RUN cd osslsigncode-$VERSION.0
+RUN ./configure
+RUN make
+RUN make install
 
 
 FROM quay.io/giantswarm/alpine:3.14
