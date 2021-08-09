@@ -1,4 +1,4 @@
-FROM quay.io/giantswarm/alpine:3.14 AS builder
+FROM quay.io/giantswarm/alpine:3.14.1 AS builder
 
 WORKDIR /opt/codesign-util/
 
@@ -7,7 +7,7 @@ ENV VERSION     2.1
 ENV SHA256_HASH c512931b6fe151297a1c689f88501e20ffc204c4ffe30e7392eb3decf195065b
 
 # Dependencies
-RUN apk add --update --no-cache curl build-base make openssl-dev curl-dev autoconf libgsf-dev
+RUN apk add --update --no-cache curl build-base openssl-dev curl-dev autoconf libgsf-dev
 
 # Download and verify osslsigncode source
 RUN curl -s -L https://github.com/mtrojnar/osslsigncode/releases/download/$VERSION/osslsigncode-$VERSION.0.tar.gz > osslsigncode-$VERSION.0.tar.gz
@@ -18,12 +18,10 @@ RUN sha256sum -c SHA256SUM
 # Unpack and build
 RUN tar xzf osslsigncode-$VERSION.0.tar.gz
 
-RUN cd osslsigncode-$VERSION.0 && ./configure --disable-dependency-tracking
-RUN cd osslsigncode-$VERSION.0 && make
-RUN cd osslsigncode-$VERSION.0 && make install
+RUN cd osslsigncode-$VERSION.0 && ./configure && make && make install
 
 
-FROM quay.io/giantswarm/alpine:3.14
+FROM quay.io/giantswarm/alpine:3.14.1
 
 WORKDIR /usr/local/bin/
 
