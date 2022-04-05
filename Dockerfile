@@ -3,8 +3,8 @@ FROM quay.io/giantswarm/alpine:3.13.5 AS builder
 WORKDIR /opt/codesign-util/
 
 # Version and expected SHA256 hash of our 3rd party download
-ENV VERSION     2.1
-ENV SHA256_HASH c512931b6fe151297a1c689f88501e20ffc204c4ffe30e7392eb3decf195065b
+ENV VERSION     2.3
+ENV SHA256_HASH b73a7f5a68473ca467f98f93ad098142ac6ca66a32436a7d89bb833628bd2b4e
 
 # Dependencies
 RUN apk add --update --no-cache curl build-base openssl-dev curl-dev autoconf libgsf-dev
