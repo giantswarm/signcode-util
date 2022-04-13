@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2022-04-13
 
 - Update osslsigncode from v2.1 to v2.3
+- Update Alpine base Docker image to v3.15.3
 
 ## [1.0.0] - 2021-05-18
 
