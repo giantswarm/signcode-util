@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.2] - 2023-09-29
 
+- Upate Alpine base image
+
 ## [1.1.1] - 2022-04-13
 
 - Upate Alpine base Docker image to v3.15.4
