@@ -1,4 +1,4 @@
-FROM quay.io/giantswarm/alpine:3.15.4 AS builder
+FROM quay.io/giantswarm/alpine:3.18.3 AS builder
 
 WORKDIR /opt/codesign-util/
 
@@ -23,7 +23,7 @@ RUN cd osslsigncode-$VERSION.0 \
     && make install
 
 
-FROM quay.io/giantswarm/alpine:3.15.4
+FROM quay.io/giantswarm/alpine:3.18.3
 
 WORKDIR /usr/local/bin/
 
