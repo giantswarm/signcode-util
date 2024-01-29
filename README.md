@@ -16,7 +16,7 @@ A Docker image for [osslsigncode](https://github.com/mtrojnar/osslsigncode) to s
 docker run --rm -ti \
   -v $(pwd)/certs:/mnt/certs \
   -v $(pwd)/binaries:/mnt/binaries \
-  quay.io/giantswarm/signcode-util:latest \
+  gsoci.azurecr.io/giantswarm/signcode-util:latest \
   sign \
   -pkcs12 /mnt/certs/cert.p12 \
   -n "My Program Name" \
@@ -35,7 +35,7 @@ For syntax details, run `docker run --rm -ti quay.io/giantswarm/signcode-util:la
 ```nohighlight
 docker run --rm -ti \
   -v $(pwd)/binaries:/mnt/binaries \
-  quay.io/giantswarm/signcode-util:latest \
+  gsoci.azurecr.io/giantswarm/signcode-util:latest \
   verify \
   /mnt/binaries/signed.exe
 ```
