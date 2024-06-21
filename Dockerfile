@@ -22,7 +22,7 @@ RUN cd osslsigncode-$OSSLSIGNCODE_VER \
     && mkdir build \
     && cd build \
     && cmake -S .. \
-    && cmake --build . && \
+    && cmake --build . \
     && cmake --install .
 
 FROM gsoci.azurecr.io/giantswarm/alpine:3.20.0
