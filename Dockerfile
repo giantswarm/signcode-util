@@ -16,11 +16,13 @@ RUN echo "$SHA256_HASH  osslsigncode-$OSSLSIGNCODE_VER.tar.gz" > SHA256SUM
 RUN sha256sum -c SHA256SUM
 
 # Unpack and build
+# Adapted from https://github.com/mtrojnar/osslsigncode/blob/2.8/Dockerfile
 RUN tar xzf osslsigncode-$OSSLSIGNCODE_VER.tar.gz
 RUN cd osslsigncode-$OSSLSIGNCODE_VER \
     && mkdir build \
     && cd build \
     && cmake -S .. \
+    && cmake --build . && \
     && cmake --install .
 
 FROM gsoci.azurecr.io/giantswarm/alpine:3.20.0
