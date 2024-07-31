@@ -1,4 +1,4 @@
-FROM gsoci.azurecr.io/giantswarm/alpine:3.20.1 AS builder
+FROM gsoci.azurecr.io/giantswarm/alpine:3.20.2 AS builder
 
 WORKDIR /opt/codesign-util/
 
@@ -23,7 +23,7 @@ RUN cd osslsigncode-$VERSION.0 \
     && make install
 
 
-FROM gsoci.azurecr.io/giantswarm/alpine:3.20.1
+FROM gsoci.azurecr.io/giantswarm/alpine:3.20.2
 
 WORKDIR /usr/local/bin/
 
