@@ -6,10 +6,14 @@ workflows:
   build-workflow:
     jobs:
 
-      - architect/push-to-registries:
-          context: architect
-          name: push-to-registries
-          filters:
+    - architect/push-to-registries:
+        context: architect
+        name: push-to-registries
+        filters:
             # Trigger job also on git tag.
-            tags:
-              only: /^v.*/
+          tags:
+            only: /^v.*/
+          branches:
+            ignore:
+            - main
+            - master
